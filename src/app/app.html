@@ -1,0 +1,19 @@
+<div class="aplicacion" [class.tema-oscuro]="modoOscuro()">
+  <main>
+    <header class="cabecera">
+      <div>
+        <p class="etiqueta">REDES · SISTEMAS · CIBERSEGURIDAD</p>
+        <h1>Galería de Tecnología</h1>
+        <p class="introduccion">Una colección de imágenes sobre redes, sistemas informáticos y ciberseguridad.</p>
+        <p class="subtitulo">Mi primera aplicación desarrollada con Angular.</p>
+      </div>
+      <button type="button" class="boton-tema" (click)="cambiarTema()"
+        [attr.aria-label]="modoOscuro() ? 'Activar modo claro' : 'Activar modo oscuro'"
+        [attr.aria-pressed]="modoOscuro()">
+        <span aria-hidden="true">{{ modoOscuro() ? '☀' : '☾' }}</span>
+        {{ modoOscuro() ? 'Modo claro' : 'Modo oscuro' }}
+      </button>
+    </header>
+    <app-galeria />
+  </main>
+</div>

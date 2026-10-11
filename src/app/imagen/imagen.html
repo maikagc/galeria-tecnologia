@@ -1,0 +1,29 @@
+<article class="tarjeta">
+
+  <!-- Botón que permite ampliar la fotografía -->
+  <button
+    type="button"
+    class="boton-imagen"
+    (click)="abrirImagen()"
+    [attr.aria-label]="'Ampliar imagen: ' + titulo()"
+  >
+    <img
+      [src]="url()"
+      [alt]="titulo()"
+      loading="lazy"
+    >
+  </button>
+
+  <div class="contenido-tarjeta">
+
+    <h3>{{ titulo() }}</h3>
+
+    <p>
+      <strong>Categoría:</strong> {{ categoria() }}
+    </p>
+
+    <p>{{ descripcion() }}</p>
+
+  </div>
+
+</article>

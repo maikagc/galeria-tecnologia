@@ -1,0 +1,99 @@
+<section>
+
+  <h2>Nuestra colección de imágenes</h2>
+
+  <p>
+    Explora fotografías relacionadas con redes,
+    sistemas, desarrollo y ciberseguridad.
+  </p>
+
+  <!-- Filtros por categorías -->
+
+  <div class="filtros" aria-label="Filtrar fotografías por categoría">
+
+    @for (categoria of categorias; track categoria) {
+
+      <button
+        type="button"
+        class="boton-filtro"
+        [class.activo]="categoriaSeleccionada === categoria"
+        [attr.aria-pressed]="categoriaSeleccionada === categoria"
+        (click)="seleccionarCategoria(categoria)"
+      >
+        {{ categoria }}
+      </button>
+
+    }
+
+  </div>
+
+  <!-- Galería de fotografías -->
+
+  <div class="contenedor-galeria">
+
+    @for (foto of fotografiasFiltradas; track foto.id) {
+
+      <app-imagen
+        [titulo]="foto.titulo"
+        [categoria]="foto.categoria"
+        [descripcion]="foto.descripcion"
+        [url]="foto.url"
+        (seleccionada)="abrirVisor(foto)"
+      >
+      </app-imagen>
+
+    }
+
+  </div>
+
+</section>
+
+<!-- Visor ampliado -->
+
+@if (fotografiaAmpliada; as foto) {
+
+  <div
+    class="fondo-visor"
+    (click)="cerrarVisor()"
+    role="presentation"
+  >
+
+    <div
+      class="ventana-visor"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="'Imagen ampliada: ' + foto.titulo"
+      (click)="$event.stopPropagation()"
+      (keydown.escape)="cerrarVisor()"
+    >
+
+      <button
+      #botonCerrar
+      type="button"
+      class="cerrar-visor"
+      (click)="cerrarVisor()"
+      aria-label="Cerrar imagen ampliada"
+    >
+    ✕
+    </button>
+
+      <img
+        [src]="foto.url"
+        [alt]="foto.titulo"
+      >
+
+      <div class="informacion-visor">
+
+        <h2>{{ foto.titulo }}</h2>
+
+        <p><strong>Categoría:</strong> {{ foto.categoria }}</p>
+
+        <p>{{ foto.descripcion }}</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}

@@ -1,0 +1,89 @@
+/* Tarjeta reutilizable de fotografía */
+
+.tarjeta {
+  height: 100%;
+  background-color: var(--color-tarjeta, #ffffff);
+  color: var(--color-texto-tarjeta, #14243d);
+  border: 1px solid var(--color-borde-tarjeta, #dbe4ef);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(20, 36, 61, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(20, 36, 61, 0.15);
+}
+
+.tarjeta img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.contenido-tarjeta {
+  padding: 18px;
+}
+
+.tarjeta h3 {
+  font-size: 1.15rem;
+  margin: 0 0 8px;
+}
+
+.tarjeta p {
+  margin: 0 0 14px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.tarjeta p:last-child {
+  margin-bottom: 0;
+}
+
+.tarjeta p strong {
+  color: var(--color-acento-tarjeta, #1558c0);
+}
+
+@media (max-width: 600px) {
+  .tarjeta img {
+    height: 230px;
+  }
+}
+
+/* Botón que contiene la fotografía */
+
+.boton-imagen {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.boton-imagen img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.boton-imagen:hover img {
+  transform: scale(1.04);
+}
+
+.boton-imagen:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: -3px;
+}
+
+@media (max-width: 600px) {
+  .boton-imagen img {
+    height: 230px;
+  }
+}
